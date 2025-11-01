@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ei</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>World Hopper!</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="artist1.html">Andeng</a>
+      <a href="artist2.html">Dio</a>
+      <a href="artist3.html">Ei</a>
+      <a href="artist4.html">Lamuel</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Ei</h2>
+      <div class="reflection">
+        <p>
+          I Started Making ocs when I was 7 (Mostly lost media since I can't remember any of them and it's when I had a Sonic Phase).
+          The Oldest Oc I had was from 2013 which is an mp3 player.
+          The Ocs I make ended up being a reflection of myself either in a realistic sense or who I wanted to be. Some are either rich and competent or ocs that feels like me but with longer hair and looking cool. My inspiration in terms of character designs seems to fall onto some royal category, looking regal and have the cravat and the dresses but that's just me dreaming and now projecting those desires to my characters
+        </p>
+      </div>
+
+      <div class="carousel">
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
+        <img src="images/E1.jpg" alt="Artwork 1" class="active">
+        <img src="images/E2.png" alt="Artwork 2">
+        <img src="images/E3.png" alt="Artwork 3">
+        <img src="images/E4.png" alt="Artwork 4">
+        <img src="images/E5.jpg" alt="Artwork 5">
+        <img src="images/E6.jpg" alt="Artwork 6">
+      </div>
+
+      <div class="carousel-thumbnails">
+        <img src="images/E1.jpg" class="active">
+        <img src="images/E2.png">
+        <img src="images/E3.png">
+        <img src="images/E4.png">
+        <img src="images/E5.jpg">
+        <img src="images/E6.jpg">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Digital Art Collective</p>
+  </footer>
+
+  <script>
+    const isLocal = window.location.href.includes("127.0.0.1") || window.location.href.includes("localhost");
+
+    if (!isLocal) {
+      document.body.classList.add('fade-enter');
+      window.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.remove('fade-enter');
+      });
+
+      document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', e => {
+          if (link.href.includes('#') || link.target === '_blank') return;
+          e.preventDefault();
+          document.body.classList.add('fade-enter');
+          setTimeout(() => { window.location = link.href; }, 300);
+        });
+      });
+    }
+
+    // Carousel Logic
+    const images = document.querySelectorAll('.carousel img');
+    const thumbs = document.querySelectorAll('.carousel-thumbnails img');
+    const next = document.querySelector('.next');
+    const prev = document.querySelector('.prev');
+    let index = 0;
+
+    function showImage(i) {
+      images.forEach(img => img.classList.remove('active'));
+      thumbs.forEach(t => t.classList.remove('active'));
+      images[i].classList.add('active');
+      thumbs[i].classList.add('active');
+      index = i;
+    }
+
+    next.onclick = () => showImage((index + 1) % images.length);
+    prev.onclick = () => showImage((index - 1 + images.length) % images.length);
+    thumbs.forEach((t, i) => t.addEventListener('click', () => showImage(i)));
+
+    // Auto change
+    setInterval(() => showImage((index + 1) % images.length), 5000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Art Exhibit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>World Hopper!</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="artist1.html">Andeng</a>
+      <a href="artist2.html">Dio</a>
+      <a href="artist3.html">Ei</a>
+      <a href="artist4.html">Lamuel</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is an OC? And what is OC Art?</h2>
+      <div class="reflection">
+        <p> An OC (Original Character) is a character you made or sketched yourself, not from an existing show, game, or story.
+            With its own personality, story, and design, they are often used to express creativity, explore new ideas, or build original worlds.
+        </p> 
+    </br>
+        <p> Step into a tapestry of creativity, where original characters spring to life through the eyes of our group of artists and storytellers.
+            Each piece pulses with its own spirit, personality, and flair, weaving our individual visions ina  vibrant, shared universe.
+        </p>
+    </br>
+        <p>
+            From delicate sketches to bold digital paintings, from whimiscal concept art to fully realized illustrations,
+            our work is a celebration of imagination, collaboration, and the magic of storytelling through character design.
+            Together, we invite you to explore, dream, and wander through the worlds we've shaped.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Digital Art Collective</p>
+  </footer>
+
+  <script>
+    const isLocal = window.location.href.includes("127.0.0.1") || window.location.href.includes("localhost");
+
+    if (!isLocal) {
+      document.body.classList.add('fade-enter');
+      window.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.remove('fade-enter');
+      });
+
+      document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', e => {
+          if (link.href.includes('#') || link.target === '_blank') return;
+          e.preventDefault();
+          document.body.classList.add('fade-enter');
+          setTimeout(() => { window.location = link.href; }, 300);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

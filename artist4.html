@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siffrin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>World Hopper!</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="artist1.html">Andeng</a>
+      <a href="artist2.html">Dio</a>
+      <a href="artist3.html">Ei</a>
+      <a href="artist4.html">Lamuel</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Lamuel</h2>
+      <div class="reflection">
+        <p>
+         I started making OCs like maybe 2016. I used to watch this series on YouTube based on UNDERTALE, a video game I was heavily into back then. Watching that series and being surrounded by so much art of the game made me inspired to make my first OC.
+         </br>
+         Since then I’ve been making more and more over the years, scrapping or repurposing some of them, and updating the ones I’ve kept. The first one I’ve made, who is Conrad, is still an OC I keep around.
+         </br>
+         I’m not really sure if I thought about what kind of OC I like to make. The first one I made was a self-insert and the majority of my OCs were just heavily inspired by existing characters that I liked to some degree.
+        </p>
+      </div>
+
+      <div class="carousel">
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
+        <img src="images/S1.png" alt="Artwork 1" class="active">
+        <img src="images/S2.png" alt="Artwork 2">
+        <img src="images/S3.png" alt="Artwork 3">
+        <img src="images/S4.png" alt="Artwork 4">
+        <img src="images/S5.png" alt="Artwork 5">
+        <img src="images/S6.png" alt="Artwork 6">
+      </div>
+
+      <div class="carousel-thumbnails">
+        <img src="images/S1.png" class="active">
+        <img src="images/S2.png">
+        <img src="images/S3.png">
+        <img src="images/S4.png">
+        <img src="images/S5.png">
+        <img src="images/S6.png">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Digital Art Collective</p>
+  </footer>
+
+  <script>
+    const isLocal = window.location.href.includes("127.0.0.1") || window.location.href.includes("localhost");
+
+    if (!isLocal) {
+      document.body.classList.add('fade-enter');
+      window.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.remove('fade-enter');
+      });
+
+      document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', e => {
+          if (link.href.includes('#') || link.target === '_blank') return;
+          e.preventDefault();
+          document.body.classList.add('fade-enter');
+          setTimeout(() => { window.location = link.href; }, 300);
+        });
+      });
+    }
+
+    // Carousel Logic
+    const images = document.querySelectorAll('.carousel img');
+    const thumbs = document.querySelectorAll('.carousel-thumbnails img');
+    const next = document.querySelector('.next');
+    const prev = document.querySelector('.prev');
+    let index = 0;
+
+    function showImage(i) {
+      images.forEach(img => img.classList.remove('active'));
+      thumbs.forEach(t => t.classList.remove('active'));
+      images[i].classList.add('active');
+      thumbs[i].classList.add('active');
+      index = i;
+    }
+
+    next.onclick = () => showImage((index + 1) % images.length);
+    prev.onclick = () => showImage((index - 1 + images.length) % images.length);
+    thumbs.forEach((t, i) => t.addEventListener('click', () => showImage(i)));
+
+    // Auto change
+    setInterval(() => showImage((index + 1) % images.length), 5000);
+  </script>
+</body>
+</html>

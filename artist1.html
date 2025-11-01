@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andeng</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>World Hopper!</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="artist1.html">Andeng</a>
+      <a href="artist2.html">Dio</a>
+      <a href="artist3.html">Ei</a>
+      <a href="artist4.html">Lamuel</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Andeng</h2>
+      <div class="reflection">
+        <p>
+          i first created my oc when i was in 4th grade when i first listened to vocaloid and was introduced to fandoms from other shows. Back then i make oc’s who are magical as any typical young artist first started drawing. But as i reached whighschool, i decided for my oc’s to be more of the ‘mulan’ or ‘kocho shinobu’ aspects, a baby faced girl who dresses like a man and almost mistaken as a man, uses any tricks to defeat her enemies, one of my example is Akuma Hotarou, she is a normal bystander in the morning, but she has a vigilante group made out of girls, to get rid of criminals at night, and her underlings are girls she picks up from the streets and raised like a caretaker..some became her spies and some fights with her (this was the time i was into Tokyo Revengers a lot). 
+        </p>
+      </div>
+
+      <div class="carousel">
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
+        <img src="images/A1.jpg" alt="Artwork 1" class="active">
+        <img src="images/A2.jpg" alt="Artwork 2">
+        <img src="images/A3.jpg" alt="Artwork 3">
+        <img src="images/A4.jpg" alt="Artwork 4">
+        <img src="images/A5.jpg" alt="Artwork 5">
+        <img src="images/A6.jpg" alt="Artwork 6">
+      </div>
+
+      <div class="carousel-thumbnails">
+        <img src="images/A1.jpg" class="active">
+        <img src="images/A2.jpg">
+        <img src="images/A3.jpg">
+        <img src="images/A4.jpg">
+        <img src="images/A5.jpg">
+        <img src="images/A6.jpg">
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Digital Art Collective</p>
+  </footer>
+
+  <script>
+    const isLocal = window.location.href.includes("127.0.0.1") || window.location.href.includes("localhost");
+
+    if (!isLocal) {
+      document.body.classList.add('fade-enter');
+      window.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.remove('fade-enter');
+      });
+
+      document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', e => {
+          if (link.href.includes('#') || link.target === '_blank') return;
+          e.preventDefault();
+          document.body.classList.add('fade-enter');
+          setTimeout(() => { window.location = link.href; }, 300);
+        });
+      });
+    }
+
+    // Carousel Logic
+    const images = document.querySelectorAll('.carousel img');
+    const thumbs = document.querySelectorAll('.carousel-thumbnails img');
+    const next = document.querySelector('.next');
+    const prev = document.querySelector('.prev');
+    let index = 0;
+
+    function showImage(i) {
+      images.forEach(img => img.classList.remove('active'));
+      thumbs.forEach(t => t.classList.remove('active'));
+      images[i].classList.add('active');
+      thumbs[i].classList.add('active');
+      index = i;
+    }
+
+    next.onclick = () => showImage((index + 1) % images.length);
+    prev.onclick = () => showImage((index - 1 + images.length) % images.length);
+    thumbs.forEach((t, i) => t.addEventListener('click', () => showImage(i)));
+
+    // Auto change
+    setInterval(() => showImage((index + 1) % images.length), 5000);
+  </script>
+</body>
+</html>

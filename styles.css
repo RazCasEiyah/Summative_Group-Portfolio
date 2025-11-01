@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Playfair+Display:wght@500&display=swap');
+
+/* ---------- Base Styles ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #0e1b2e;
+  color: #f9f8f4;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+body.fade-enter {
+  opacity: 0;
+}
+
+header {
+  background-color: #162d4f;
+  padding: 1.2em 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4em;
+  color: #ffefad;
+  margin-bottom: 0.3em;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+nav a {
+  background-color: #ffefad;
+  color: #162d4f;
+  text-decoration: none;
+  padding: 0.6em 1em;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #f5d972;
+}
+
+/* ---------- Page Layout ---------- */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2em 1em;
+}
+
+section {
+  max-width: 800px;
+}
+
+footer {
+  background-color: #162d4f;
+  color: #ffefad;
+  text-align: center;
+  padding: 1em 0;
+  margin-top: auto;
+}
+
+/* ---------- Reflection Box ---------- */
+.reflection {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.5em;
+  margin: 1.5em 0;
+  color: #f5f4ee;
+  font-size: 1.1em;
+  line-height: 1.6em;
+}
+
+/* ---------- Carousel ---------- */
+.carousel {
+  position: relative;
+  max-width: 700px;
+  margin: 2em auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.carousel img {
+  width: 100%;
+  display: none;
+  border-radius: 16px;
+}
+
+.carousel img.active {
+  display: block;
+  animation: fade 1s ease;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.carousel-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1em;
+  flex-wrap: wrap;
+}
+
+.carousel-thumbnails img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.carousel-thumbnails img:hover,
+.carousel-thumbnails img.active {
+  opacity: 1;
+  border: 2px solid #ffefad;
+}
+
+/* ---------- Arrows ---------- */
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #ffefad;
+  font-size: 2em;
+  padding: 0.3em 0.5em;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.carousel button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.carousel .prev {
+  left: 10px;
+}
+
+.carousel .next {
+  right: 10px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.8em; }
+  nav a { padding: 0.5em 0.8em; font-size: 0.9em; }
+  .carousel-thumbnails img { width: 55px; height: 55px; }
+}
